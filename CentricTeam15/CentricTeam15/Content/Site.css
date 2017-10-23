@@ -22,3 +22,13 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.navbar{
+    background-color: indigo;
+}
+
+.jumbotron{
+    background-color:cornsilk;
+    /*background-color: cornsilk;*/
+    color: indigo;
+}
