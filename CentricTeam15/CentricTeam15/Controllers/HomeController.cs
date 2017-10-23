@@ -26,5 +26,12 @@ namespace CentricTeam15.Controllers
 
             return View();
         }
+
+        public ActionResult CoreValues ()
+        {
+            ViewBag.Message = "Core Values";
+
+            return View();
+        }
     }
 }
