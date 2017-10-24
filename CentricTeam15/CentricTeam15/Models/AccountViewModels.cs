@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace CentricTeam15.Models
@@ -68,6 +69,26 @@ namespace CentricTeam15.Models
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        [Required]
+        [Display(Name = "First Name")]
+        public string firstName { get; set; }
+
+        [Required]
+        [Display(Name = "Last Name")]
+        public string lastName { get; set; }
+
+        [Required]
+        [Display(Name = "Business Unit")]
+        public string businessUnit { get; set; }
+
+        [Required]
+        [Display(Name = "Hire Date")]
+        public DateTime hireDate { get; set; }
+
+        [Required]
+        [Display(Name = "Title")]
+        public string title { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
