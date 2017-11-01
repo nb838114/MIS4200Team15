@@ -25,7 +25,8 @@ namespace CentricTeam15.Controllers
             }
             else
             {
-                return View("NotAuthorized");
+                return View(db.AccountDetails.ToList());
+                //return View("NotAuthorized");
             }
 
         }
@@ -99,7 +100,8 @@ namespace CentricTeam15.Controllers
             }
             else
             {
-                return View("NotAuthenticated");
+                return View(user);
+                //return View("NotAuthenticated");
             }
 
         }
