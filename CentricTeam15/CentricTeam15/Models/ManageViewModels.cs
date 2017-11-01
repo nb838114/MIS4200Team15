@@ -13,12 +13,7 @@ namespace CentricTeam15.Models
         public string PhoneNumber { get; set; }
         public bool TwoFactor { get; set; }
         public bool BrowserRemembered { get; set; }
-        public string Email { get; set; }
-        public string firstName { get; set; }
-        public string lastName { get; set; }
-        public string businessUnit { get; set; }
-        public string title { get; set; }
-        public DateTime hireDate { get; set; }
+       
     }
 
     public class ManageLoginsViewModel

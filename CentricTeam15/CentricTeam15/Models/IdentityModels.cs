@@ -25,6 +25,8 @@ namespace CentricTeam15.Models
         {
         }
 
+        public DbSet<AccountDetail> AccountDetails { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
