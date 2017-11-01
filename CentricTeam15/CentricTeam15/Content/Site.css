@@ -24,11 +24,10 @@ textarea {
 }
 
 .navbar{
-    background-color: indigo;
+    background-color: rgb(54,45,102);
 }
 
-.jumbotron{
-    background-color:cornsilk;
-    /*background-color: cornsilk;*/
-    color: indigo;
+.jumbotron {
+    background-color: cornsilk;
+    color: rgb(54,45,102);
 }
