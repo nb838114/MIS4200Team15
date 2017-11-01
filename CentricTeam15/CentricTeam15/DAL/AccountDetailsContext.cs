@@ -10,6 +10,7 @@ namespace CentricTeam15.DAL
 {
     public class AccountDetailsContext : DbContext
     {
+        public System.Data.Entity.DbSet<CentricTeam15.Models.AccountDetail> AccountDetails { get; set; }
         //public Context() : base("name=DefaultConnection")
         //{ }
 
