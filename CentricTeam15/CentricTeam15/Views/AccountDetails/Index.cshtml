@@ -4,6 +4,7 @@
     ViewBag.Title = "Index";
 }
 <h2>Index</h2>
+
 @using (Html.BeginForm("Index", "users", FormMethod.Get))
 {
 <p>
@@ -13,9 +14,9 @@
         <input type="submit" value="Search" />
 
    </p>
-   
+}
 
-    
+
 
 
 <p>
@@ -43,6 +44,7 @@
         </th>
         <th></th>
     </tr>
+
 
 @foreach (var item in Model) {
     <tr>

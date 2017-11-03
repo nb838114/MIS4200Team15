@@ -25,8 +25,7 @@ namespace CentricTeam15.Controllers
             }
             else
             {
-                return View(db.AccountDetails.ToList());
-                //return View("NotAuthorized");
+                return View("NotAuthorized");
             }
 
         }
@@ -57,14 +56,14 @@ namespace CentricTeam15.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UID,lastName,firstName,userCounter1,userCounter2,userAmount,userComments")] AccountDetail user)
+        public ActionResult Create([Bind(Include = "UID,lastName,firstName,userCounter1,userCounter2,userAmount,userComments")] AccountDetail ID)
         {
             if (ModelState.IsValid)
             {
                 Guid memberID;
                 Guid.TryParse(User.Identity.GetUserId(), out memberID);
-                user.ID = memberID;
-                db.AccountDetails.Add(user);
+                ID.ID = memberID;
+                db.AccountDetails.Add(ID);
                 try
                 {
                     db.SaveChanges();
@@ -76,7 +75,7 @@ namespace CentricTeam15.Controllers
                 }
             }
 
-            return View(user);
+            return View(ID);
         }
 
 
@@ -100,8 +99,7 @@ namespace CentricTeam15.Controllers
             }
             else
             {
-                return View(user);
-                //return View("NotAuthenticated");
+                return View("NotAuthenticated");
             }
 
         }
