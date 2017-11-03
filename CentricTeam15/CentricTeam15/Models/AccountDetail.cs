@@ -28,6 +28,9 @@ namespace CentricTeam15.Models
         [Display(Name = "Title")]
         public string title { get; set; }
 
+        [Required]
+        [Display(Name = "Hire Date")]
+        public string hireDate { get; set; }
 
         [Display(Name = "Photo")]
         public string photo { get; set; }
