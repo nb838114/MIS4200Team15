@@ -3,21 +3,8 @@
 @{
     ViewBag.Title = "Index";
 }
+
 <h2>Index</h2>
-
-@using (Html.BeginForm("Index", "users", FormMethod.Get))
-{
-<p>
-    </p>
-<p>
-        Find by name: @Html.TextBox("searchString")
-        <input type="submit" value="Search" />
-
-   </p>
-}
-
-
-
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -37,14 +24,13 @@
             @Html.DisplayNameFor(model => model.title)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.hireDate)
+            @Html.DisplayNameFor(model => model.value)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.photo)
+            @Html.DisplayNameFor(model => model.message)
         </th>
         <th></th>
     </tr>
-
 
 @foreach (var item in Model) {
     <tr>
@@ -61,10 +47,10 @@
             @Html.DisplayFor(modelItem => item.title)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.hireDate)
+            @Html.DisplayFor(modelItem => item.value)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.photo)
+            @Html.DisplayFor(modelItem => item.message)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |

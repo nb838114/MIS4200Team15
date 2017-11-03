@@ -8,29 +8,20 @@ using System.Web;
 using System.Web.Mvc;
 using CentricTeam15.DAL;
 using CentricTeam15.Models;
-using Microsoft.AspNet.Identity;
 
 namespace CentricTeam15.Controllers
 {
-    public class AccountDetailsController : Controller
+    public class RecognizeMeController : Controller
     {
         private AccountDetailsContext db = new AccountDetailsContext();
 
-        // GET: AccountDetails
+        // GET: RecognizeMe
         public ActionResult Index()
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                return View(db.AccountDetails.ToList());
-            }
-            else
-            {
-                return View("NotAuthorized");
-            }
-
+            return View(db.AccountDetails.ToList());
         }
 
-        // GET: AccountDetails/Details/5
+        // GET: RecognizeMe/Details/5
         public ActionResult Details(Guid? id)
         {
             if (id == null)
@@ -45,71 +36,51 @@ namespace CentricTeam15.Controllers
             return View(accountDetail);
         }
 
-        // GET: AccountDetails/Create
+        // GET: RecognizeMe/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: AccountDetails/Create
+        // POST: RecognizeMe/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UID,lastName,firstName,userCounter1,userCounter2,userAmount,userComments")] AccountDetail ID)
+        public ActionResult Create([Bind(Include = "ID,firstName,lastName,bussinessUnit,title,value,message")] AccountDetail accountDetail)
         {
             if (ModelState.IsValid)
             {
-                Guid memberID;
-                Guid.TryParse(User.Identity.GetUserId(), out memberID);
-                ID.ID = memberID;
-                db.AccountDetails.Add(ID);
-                try
-                {
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-                catch (Exception)
-                {
-                    return View("DuplicateUser");
-                }
+                accountDetail.ID = Guid.NewGuid();
+                db.AccountDetails.Add(accountDetail);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
 
-            return View(ID);
+            return View(accountDetail);
         }
 
-
-        // GET: AccountDetails/Edit/5
+        // GET: RecognizeMe/Edit/5
         public ActionResult Edit(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AccountDetail user = db.AccountDetails.Find(id);
-            if (user == null)
+            AccountDetail accountDetail = db.AccountDetails.Find(id);
+            if (accountDetail == null)
             {
                 return HttpNotFound();
             }
-            Guid memberID;
-            Guid.TryParse(User.Identity.GetUserId(), out memberID);
-            if (user.ID == memberID)
-            {
-                return View(user);
-            }
-            else
-            {
-                return View("NotAuthenticated");
-            }
-
+            return View(accountDetail);
         }
 
-        // POST: AccountDetails/Edit/5
+        // POST: RecognizeMe/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,firstName,lastName,bussinessUnit,title,hireDate,photo")] AccountDetail accountDetail)
+        public ActionResult Edit([Bind(Include = "ID,firstName,lastName,bussinessUnit,title,value,message")] AccountDetail accountDetail)
         {
             if (ModelState.IsValid)
             {
@@ -120,7 +91,7 @@ namespace CentricTeam15.Controllers
             return View(accountDetail);
         }
 
-        // GET: AccountDetails/Delete/5
+        // GET: RecognizeMe/Delete/5
         public ActionResult Delete(Guid? id)
         {
             if (id == null)
@@ -135,7 +106,7 @@ namespace CentricTeam15.Controllers
             return View(accountDetail);
         }
 
-        // POST: AccountDetails/Delete/5
+        // POST: RecognizeMe/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
