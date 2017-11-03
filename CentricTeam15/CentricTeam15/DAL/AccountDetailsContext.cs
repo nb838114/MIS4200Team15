@@ -10,9 +10,33 @@ namespace CentricTeam15.DAL
 {
     public class AccountDetailsContext : DbContext
     {
-        //public Context() : base("name=DefaultConnection")
-        //{ }
+        public AccountDetailsContext() : base("name=DefaultConnection")
+        {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<CentricTeam15.DAL.AccountDetailsContext, CentricTeam15.Migrations.DbContext.Configuration>("DefaultConnection"));
+        }
 
         public DbSet<AccountDetail> AccountDetails { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
+
+    // Database.SetInitializer(new MigrateDatabaseToLatestVersion<CentricTeam15.DAL.AccountDetailsContext, CentricTeam15.Migrations.DbContext.Configuration>("DefaultConnection"));
+
+
+    /*public DbContext() : base("name=DefaultConnection")  
+    {
+        Database.SetInitializer(new MigrateDatabaseToLatestVersion<CentricTeam15.DAL.AccountDetailsContext, CentricTeam15.Migrations.DbContext.Configuration>("DefaultConnection"));
+    }*/
+
+
+    /*protected override void OnModelCreating(DbModelBuilder modelBuilder)
+    {
+
+        base.OnModelCreating(modelBuilder);
+    }*/
 }
+
