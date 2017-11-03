@@ -56,7 +56,15 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.photo)
+            <img src="~/_Images/@Model.photo" height="400" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.description)
         </dd>
 
     </dl>
