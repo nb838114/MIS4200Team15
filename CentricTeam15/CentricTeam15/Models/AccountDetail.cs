@@ -28,8 +28,11 @@ namespace CentricTeam15.Models
         [Display(Name = "Title")]
         public string title { get; set; }
 
-        //add hire date after talking to luce, recreate controller
 
+        [Display(Name = "Photo")]
+        public string photo { get; set; }
+
+        [Display(Name = "Description")]
         public string description { get; set; }
 
         public string coreValue { get; set; }
