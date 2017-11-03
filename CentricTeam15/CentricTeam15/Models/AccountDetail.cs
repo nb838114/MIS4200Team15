@@ -34,5 +34,11 @@ namespace CentricTeam15.Models
 
         public string photo { get; set; }
 
+        public string description { get; set; }
+
+        public string coreValue { get; set; }
+
+        public string comment { get; set; }
+
     }
 }
