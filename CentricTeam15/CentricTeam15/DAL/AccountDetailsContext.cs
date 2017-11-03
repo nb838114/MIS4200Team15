@@ -10,9 +10,9 @@ namespace CentricTeam15.DAL
 {
     public class AccountDetailsContext : DbContext
     {
-        //public Context() : base("name=DefaultConnection")
-        //{ }
+        public AccountDetailsContext() : base("name=DefaultConnection")
+        { }
 
-        //public DbSet<AccountDetail> AccountDetails { get; set; }
+        public DbSet<AccountDetail> AccountDetails { get; set; }
     }
 }
