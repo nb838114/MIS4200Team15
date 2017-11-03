@@ -37,6 +37,11 @@ namespace CentricTeam15.Models
         public string message { get; set; }
 
         //add hire date after talking to luce, recreate controller
+        [Display(Name = "Hire Date")]
+        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
+        public DateTime hireDate { get; set; }
+
+        public string photo { get; set; }
 
     }
 }

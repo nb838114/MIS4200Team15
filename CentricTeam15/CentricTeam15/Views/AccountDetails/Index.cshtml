@@ -3,8 +3,20 @@
 @{
     ViewBag.Title = "Index";
 }
-
 <h2>Index</h2>
+@using (Html.BeginForm("Index", "users", FormMethod.Get))
+{
+<p>
+    </p>
+<p>
+        Find by name: @Html.TextBox("searchString")
+        <input type="submit" value="Search" />
+
+   </p>
+   
+
+    
+
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -23,6 +35,12 @@
         <th>
             @Html.DisplayNameFor(model => model.title)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hireDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.photo)
+        </th>
         <th></th>
     </tr>
 
@@ -39,6 +57,12 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hireDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.photo)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
