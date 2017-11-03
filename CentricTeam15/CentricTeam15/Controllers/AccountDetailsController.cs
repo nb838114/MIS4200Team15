@@ -57,6 +57,7 @@ namespace CentricTeam15.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult Create([Bind(Include = "UID,lastName,firstName,userCounter1,userCounter2,userAmount,userComments")] AccountDetail ID)
         {
             if (ModelState.IsValid)
@@ -110,6 +111,7 @@ namespace CentricTeam15.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult Edit([Bind(Include = "ID,firstName,lastName,bussinessUnit,title,hireDate,photo,description")] AccountDetail accountDetail)
         {
             //if (ModelState.IsValid)

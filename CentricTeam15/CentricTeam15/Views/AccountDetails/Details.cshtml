@@ -59,11 +59,13 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.description)
+            @*@Html.DisplayNameFor(model => model.description)*@
+            @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.description))
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.description)
+            @*@Html.DisplayFor(model => model.description)*@
+            @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.description))
         </dd>
 
 
