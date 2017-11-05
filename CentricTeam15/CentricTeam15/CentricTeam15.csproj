@@ -194,12 +194,13 @@
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\RecognizeMeController.cs" />
+    <Compile Include="Controllers\RecognizeMe2Controller.cs" />
     <Compile Include="DAL\AccountDetailsContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\DbContext\Configuration.cs" />
+    <Compile Include="Models\RecognizeMe.cs" />
     <Compile Include="Models\AccountDetail.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -273,6 +274,11 @@
     <Content Include="Views\AccountDetails\Details.cshtml" />
     <Content Include="Views\AccountDetails\Edit.cshtml" />
     <Content Include="Views\AccountDetails\Index.cshtml" />
+    <Content Include="Views\RecognizeMe2\Create.cshtml" />
+    <Content Include="Views\RecognizeMe2\Delete.cshtml" />
+    <Content Include="Views\RecognizeMe2\Details.cshtml" />
+    <Content Include="Views\RecognizeMe2\Edit.cshtml" />
+    <Content Include="Views\RecognizeMe2\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

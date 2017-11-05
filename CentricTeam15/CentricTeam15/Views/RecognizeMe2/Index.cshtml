@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CentricTeam15.Models.AccountDetail>
+﻿@model IEnumerable<CentricTeam15.Models.RecognizeMe>
 
 @{
     ViewBag.Title = "Index";
@@ -21,13 +21,10 @@
             @Html.DisplayNameFor(model => model.bussinessUnit)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.title)
+            @Html.DisplayNameFor(model => model.description)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.hireDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.photo)
+            @Html.DisplayNameFor(model => model.coreValue)
         </th>
         <th></th>
     </tr>
@@ -44,13 +41,10 @@
             @Html.DisplayFor(modelItem => item.bussinessUnit)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.title)
+            @Html.DisplayFor(modelItem => item.description)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.hireDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.photo)
+            @Html.DisplayFor(modelItem => item.coreValue)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |

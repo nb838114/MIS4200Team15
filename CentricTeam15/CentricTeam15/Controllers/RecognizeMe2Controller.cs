@@ -11,108 +11,108 @@ using CentricTeam15.Models;
 
 namespace CentricTeam15.Controllers
 {
-    public class RecognizeMeController : Controller
+    public class RecognizeMe2Controller : Controller
     {
         private AccountDetailsContext db = new AccountDetailsContext();
 
-        // GET: RecognizeMe
+        // GET: RecognizeMe2
         public ActionResult Index()
         {
-            return View(db.AccountDetails.ToList());
+            return View(db.RecognizeMes.ToList());
         }
 
-        // GET: RecognizeMe/Details/5
+        // GET: RecognizeMe2/Details/5
         public ActionResult Details(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AccountDetail accountDetail = db.AccountDetails.Find(id);
-            if (accountDetail == null)
+            RecognizeMe recognizeMe = db.RecognizeMes.Find(id);
+            if (recognizeMe == null)
             {
                 return HttpNotFound();
             }
-            return View(accountDetail);
+            return View(recognizeMe);
         }
 
-        // GET: RecognizeMe/Create
+        // GET: RecognizeMe2/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: RecognizeMe/Create
+        // POST: RecognizeMe2/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,firstName,lastName,bussinessUnit,title,value,message")] AccountDetail accountDetail)
+        public ActionResult Create([Bind(Include = "ID,firstName,lastName,bussinessUnit,description,coreValue")] RecognizeMe recognizeMe)
         {
             if (ModelState.IsValid)
             {
-                accountDetail.ID = Guid.NewGuid();
-                db.AccountDetails.Add(accountDetail);
+                recognizeMe.ID = Guid.NewGuid();
+                db.RecognizeMes.Add(recognizeMe);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(accountDetail);
+            return View(recognizeMe);
         }
 
-        // GET: RecognizeMe/Edit/5
+        // GET: RecognizeMe2/Edit/5
         public ActionResult Edit(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AccountDetail accountDetail = db.AccountDetails.Find(id);
-            if (accountDetail == null)
+            RecognizeMe recognizeMe = db.RecognizeMes.Find(id);
+            if (recognizeMe == null)
             {
                 return HttpNotFound();
             }
-            return View(accountDetail);
+            return View(recognizeMe);
         }
 
-        // POST: RecognizeMe/Edit/5
+        // POST: RecognizeMe2/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,firstName,lastName,bussinessUnit,title,value,message")] AccountDetail accountDetail)
+        public ActionResult Edit([Bind(Include = "ID,firstName,lastName,bussinessUnit,description,coreValue")] RecognizeMe recognizeMe)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(accountDetail).State = EntityState.Modified;
+                db.Entry(recognizeMe).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(accountDetail);
+            return View(recognizeMe);
         }
 
-        // GET: RecognizeMe/Delete/5
+        // GET: RecognizeMe2/Delete/5
         public ActionResult Delete(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AccountDetail accountDetail = db.AccountDetails.Find(id);
-            if (accountDetail == null)
+            RecognizeMe recognizeMe = db.RecognizeMes.Find(id);
+            if (recognizeMe == null)
             {
                 return HttpNotFound();
             }
-            return View(accountDetail);
+            return View(recognizeMe);
         }
 
-        // POST: RecognizeMe/Delete/5
+        // POST: RecognizeMe2/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
-            AccountDetail accountDetail = db.AccountDetails.Find(id);
-            db.AccountDetails.Remove(accountDetail);
+            RecognizeMe recognizeMe = db.RecognizeMes.Find(id);
+            db.RecognizeMes.Remove(recognizeMe);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

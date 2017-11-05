@@ -7,7 +7,7 @@ using System.Web;
 
 namespace CentricTeam15.Models
 {
-    public class AccountDetail
+    public class RecognizeMe
     {
         [Required]
         public Guid ID { get; set; }
@@ -21,21 +21,14 @@ namespace CentricTeam15.Models
         public string lastName { get; set; }
 
         [Required]
-        [Display(Name = "Bussiness Unit")]
+        [Display(Name = "Business Unit")]
         public string bussinessUnit { get; set; }
 
-        [Required]
-        [Display(Name = "Title")]
-        public string title { get; set; }
+        [Display(Name = "Description")]
+        public string description { get; set; }
 
-        [Required]
-        [Display(Name = "Hire Date")]
-        public string hireDate { get; set; }
-
-        [Display(Name = "Photo")]
-        public string photo { get; set; }
-
-
+        [Display(Name = "Core Value")]
+        public string coreValue { get; set; }
 
     }
 }

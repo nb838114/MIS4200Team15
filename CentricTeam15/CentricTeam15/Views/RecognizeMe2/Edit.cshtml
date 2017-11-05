@@ -1,4 +1,4 @@
-﻿@model CentricTeam15.Models.AccountDetail
+﻿@model CentricTeam15.Models.RecognizeMe
 
 @{
     ViewBag.Title = "Edit";
@@ -12,7 +12,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>AccountDetail</h4>
+        <h4>RecognizeMe</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.ID)
@@ -42,26 +42,18 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.title, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.description, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.title, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.title, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.hireDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.coreValue, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.hireDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.hireDate, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.photo, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.photo, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.photo, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.coreValue, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.coreValue, "", new { @class = "text-danger" })
             </div>
         </div>
 
