@@ -11,7 +11,7 @@
 </p>
 
 
-@using (Html.BeginForm("Index", "AccountDetails", FormMethod.Get))
+@using (Html.BeginForm("Index", "", FormMethod.Get))
 {
     <p>
 </p>
@@ -19,7 +19,9 @@
         Find by name: @Html.TextBox("searchString")
         <input type="submit" value="Search" />
 </p>
+
 }
+
 
 
 
