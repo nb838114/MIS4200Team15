@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using CentricTeam15.DAL;
 using CentricTeam15.Models;
+using Microsoft.AspNet.Identity;
+using System.IO;
 
 namespace CentricTeam15.Controllers
 {
@@ -18,7 +20,15 @@ namespace CentricTeam15.Controllers
         // GET: AccountDetails
         public ActionResult Index()
         {
+            if (User.Identity.IsAuthenticated)
+            {
             return View(db.AccountDetails.ToList());
+            }
+
+            else
+            {
+                return View("Not Authorized");
+            }
         }
 
         // GET: AccountDetails/Details/5
@@ -47,17 +57,26 @@ namespace CentricTeam15.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,firstName,lastName,bussinessUnit,title,hireDate,photo")] AccountDetail accountDetail)
+        public ActionResult Create([Bind(Include = "ID,firstName,lastName,bussinessUnit,title,hireDate,photo")] AccountDetail ID)
         {
             if (ModelState.IsValid)
             {
-                accountDetail.ID = Guid.NewGuid();
-                db.AccountDetails.Add(accountDetail);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                Guid memberID;
+                Guid.TryParse(User.Identity.GetUserId(), out memberID);
+                ID.ID = memberID;
+                db.AccountDetails.Add(ID);
+                try
+                {
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                catch (Exception)
+                {
+                return View("DuplicateUser");
+                }
+                }
 
-            return View(accountDetail);
+            return View(ID);
         }
 
         // GET: AccountDetails/Edit/5
@@ -67,12 +86,24 @@ namespace CentricTeam15.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AccountDetail accountDetail = db.AccountDetails.Find(id);
-            if (accountDetail == null)
+            AccountDetail user = db.AccountDetails.Find(id);
+            if (user == null)
             {
                 return HttpNotFound();
             }
-            return View(accountDetail);
+
+            Guid memberID;
+            Guid.TryParse(User.Identity.GetUserId(), out memberID);
+
+            if (user.ID == memberID)
+            {
+            return View(user);
+            }
+            else
+            {
+            return View("NotAuthenticated");
+            }
+
         }
 
         // POST: AccountDetails/Edit/5
