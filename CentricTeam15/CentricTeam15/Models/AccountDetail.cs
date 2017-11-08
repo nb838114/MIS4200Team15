@@ -35,6 +35,9 @@ namespace CentricTeam15.Models
         [Display(Name = "Photo")]
         public string photo { get; set; }
 
+        //[Display(Name = "Biography")]
+        //public string userBiography { get; set; }
+
 
 
     }
