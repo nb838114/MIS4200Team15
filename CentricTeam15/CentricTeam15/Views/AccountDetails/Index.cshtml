@@ -4,11 +4,27 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Directory</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+
+@using (Html.BeginForm("Index", "AccountDetails", FormMethod.Get))
+{
+    <p>
+</p>
+    <p>
+        Find by name: @Html.TextBox("searchString")
+        <input type="submit" value="Search" />
+</p>
+
+}
+
+
+
+
 <table class="table">
     <tr>
         <th>
