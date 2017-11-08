@@ -1,9 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.15
+VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CentricTeam15", "CentricTeam15\CentricTeam15.csproj", "{378EF91D-345F-47C0-AA27-99717544BB98}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{15EEB55B-677E-46F4-A24F-F4F8074A4E89}"
+	ProjectSection(SolutionItems) = preProject
+		userBiographyTinyMCE.html = userBiographyTinyMCE.html
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
