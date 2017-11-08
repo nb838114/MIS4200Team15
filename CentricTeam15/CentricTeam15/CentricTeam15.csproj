@@ -279,6 +279,7 @@
     <Content Include="Views\RecognizeMe2\Details.cshtml" />
     <Content Include="Views\RecognizeMe2\Edit.cshtml" />
     <Content Include="Views\RecognizeMe2\Index.cshtml" />
+    <Content Include="Views\Suggestions\Suggestions.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
