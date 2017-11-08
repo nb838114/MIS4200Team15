@@ -18,6 +18,8 @@ namespace CentricTeam15.Controllers
         private AccountDetailsContext db = new AccountDetailsContext();
 
         // GET: AccountDetails
+
+/*
         public ActionResult Index()
         {
             if (User.Identity.IsAuthenticated)
@@ -30,7 +32,7 @@ namespace CentricTeam15.Controllers
                 return View("Not Authorized");
             }
         }
-
+        */
         // GET: AccountDetails/Details/5
         public ActionResult Details(Guid? id)
         {
@@ -157,20 +159,19 @@ namespace CentricTeam15.Controllers
             base.Dispose(disposing);
 
         }
-  /*       public ActionResult Index(string searchString)
+         
+         public ActionResult Index(string searchString)
  {
-var testusers = from u in db.AccountDetails select u;
+         var testusers = from u in db.AccountDetails select u;
          if (!String.IsNullOrEmpty(searchString))
     {
-	testusers = testusers.Where(u => u.lastName.Contains(searchString)
-|| u.firstName.Contains(searchString));
-// if here, users were found so view them
-	return View(testusers.ToList());
+	      testusers = testusers.Where(u => u.lastName.Contains(searchString)
+          || u.firstName.Contains(searchString));
+	      return View(testusers.ToList());
          }
-      return View(db.AccountDetails.ToList());
-    
+         return View(db.AccountDetails.ToList());
  }
- */
+ 
 
     }
 
