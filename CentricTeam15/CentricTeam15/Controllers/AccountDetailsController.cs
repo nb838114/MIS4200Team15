@@ -27,7 +27,7 @@ namespace CentricTeam15.Controllers
 
             else
             {
-                return View("Not Authorized");
+                return View("NotAuthorized");
             }
         }
 
