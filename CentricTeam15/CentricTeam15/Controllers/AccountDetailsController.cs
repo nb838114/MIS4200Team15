@@ -68,7 +68,7 @@ namespace CentricTeam15.Controllers
                 try
                 {
                     db.SaveChanges();
-                    return RedirectToAction("Index");
+                    return RedirectToAction("DIndex");
                 }
                 catch (Exception)
                 {
