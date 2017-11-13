@@ -27,7 +27,7 @@ namespace CentricTeam15.Controllers
 
             else
             {
-                return View("Not Authorized");
+                return View("NotAuthorized");
             }
         }
 
@@ -57,7 +57,8 @@ namespace CentricTeam15.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,firstName,lastName,bussinessUnit,title,hireDate,photo")] AccountDetail ID)
+        [ValidateInput(false)]
+        public ActionResult Create([Bind(Include = "ID,firstName,lastName,bussinessUnit,title,hireDate,photo,userBiography")] AccountDetail ID)
         {
             if (ModelState.IsValid)
             {
@@ -65,10 +66,33 @@ namespace CentricTeam15.Controllers
                 Guid.TryParse(User.Identity.GetUserId(), out memberID);
                 ID.ID = memberID;
                 db.AccountDetails.Add(ID);
+
                 try
                 {
                     db.SaveChanges();
                     return RedirectToAction("DIndex");
+
+                    HttpPostedFileBase file = Request.Files["photo"]; //(A) – see notes below
+                                                                      //accountDetail.photo = Guid.NewGuid();
+                    if (file != null && file.FileName != null && file.FileName != "") //(B)
+                    {
+                        FileInfo fi = new FileInfo(file.FileName); //(C)
+                        if (fi.Extension != ".jpeg" && fi.Extension != ".jpg" && fi.Extension != ".png") //(D)
+                        {
+                            TempData["Errormsg"] = "Image File Extension is not valid"; //(E)
+                            return View(ID);
+                        }
+                        else
+                        {
+                            ID.photo = ID.ID + fi.Extension; //(F)
+
+                            file.SaveAs(Server.MapPath("~/_Images/" + ID.photo));  //(G)
+
+                        }
+                    }
+
+                        db.SaveChanges();
+                    return RedirectToAction("Index");
                 }
                 catch (Exception)
                 {
@@ -111,11 +135,53 @@ namespace CentricTeam15.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,firstName,lastName,bussinessUnit,title,hireDate,photo")] AccountDetail accountDetail)
+        [ValidateInput(false)]
+        public ActionResult Edit([Bind(Include = "ID,firstName,lastName,bussinessUnit,title,hireDate,photo,userBiography")] AccountDetail accountDetail)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(accountDetail).State = EntityState.Modified;
+
+                HttpPostedFileBase file = Request.Files["photo"];
+
+                if (file != null && file.FileName != null && file.FileName != "")
+                {
+                    FileInfo fi = new FileInfo(file.FileName);
+                    if (fi.Extension != ".jpeg" && fi.Extension != ".jpg" && fi.Extension != ".png")
+                    {
+                        TempData["Errormsg"] = "Image File Extension is not valid";
+                        return View(accountDetail);
+                    }
+                    else
+                    {
+                        // there is a new image, so delete the old one, if any, first
+                        AccountDetail photoOld = db.AccountDetails.Find(accountDetail.photo);
+                        string photoName = photoOld.photo;
+                        string path = Server.MapPath("~/_Images/" + photoName);
+                        // there may not be a file, so use try/catch
+                        try
+                        {
+                            if (System.IO.File.Exists(path))
+                            {
+                                System.IO.File.Delete(path);
+                            }
+                            else
+                            {
+                                // must already be deleted
+                            }
+                        }
+                        catch (Exception Ex)
+                        {
+                            // delete failed - probably not a real issue
+                        }
+                        // now upload the new image
+                        accountDetail.photo = accountDetail.photo + fi.Extension;
+
+                        file.SaveAs(Server.MapPath("~/_Images/" + accountDetail.photo + fi.Extension));
+
+                    }
+                }
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -143,6 +209,26 @@ namespace CentricTeam15.Controllers
         public ActionResult DeleteConfirmed(Guid id)
         {
             AccountDetail accountDetail = db.AccountDetails.Find(id);
+
+            string imageName = accountDetail.photo; //(A)
+            string path = Server.MapPath("~/_Images/" + imageName); //(B)
+                                                                    // there may not be a file, so use try/catch
+            try
+            {
+                if (System.IO.File.Exists(path)) //(C)
+                {
+                    System.IO.File.Delete(path); //(D)
+                }
+                else
+                {
+                    // must already be deleted (E)
+                }
+            }
+            catch (Exception Ex)
+            {
+                // delete failed - probably not a real issue (F)
+            }
+
             db.AccountDetails.Remove(accountDetail);
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -157,23 +243,45 @@ namespace CentricTeam15.Controllers
             base.Dispose(disposing);
 
         }
-  /*       public ActionResult Index(string searchString)
- {
-var testusers = from u in db.AccountDetails select u;
-         if (!String.IsNullOrEmpty(searchString))
-    {
-	testusers = testusers.Where(u => u.lastName.Contains(searchString)
-|| u.firstName.Contains(searchString));
-// if here, users were found so view them
-	return View(testusers.ToList());
-         }
-      return View(db.AccountDetails.ToList());
-    
- }
- */
- /*Mary*/
+
+
+        //Upload Photo
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Upload([Bind(Include = "photo")] AccountDetail accountDetail)
+        {
+            if (ModelState.IsValid)
+            {
+                HttpPostedFileBase file = Request.Files["photo"]; //(A) – see notes below
+                //accountDetail.photo = Guid.NewGuid();
+                if (file != null && file.FileName != null && file.FileName != "") //(B)
+                {
+                    FileInfo fi = new FileInfo(file.FileName); //(C)
+                    if (fi.Extension != ".jpeg" && fi.Extension != ".jpg" && fi.Extension != ".png") //(D)
+                    {
+                        TempData["Errormsg"] = "Image File Extension is not valid"; //(E)
+                        return View(accountDetail);
+                    }
+                    else
+                    {
+                        accountDetail.photo = accountDetail.photo + fi.Extension; //(F)
+
+                        file.SaveAs(Server.MapPath("~/_Images/" + accountDetail.photo + fi.Extension));  //(G)
+
+                    }
+                }
+                db.AccountDetails.Add(accountDetail);
+                db.SaveChanges();
+                return RedirectToAction("Index", "AccountDetail");
+            }
+
+            return View(accountDetail);
+        }
 
     }
 
+
+
 }
+
 
