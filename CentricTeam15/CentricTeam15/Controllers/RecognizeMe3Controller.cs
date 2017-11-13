@@ -11,17 +11,17 @@ using CentricTeam15.Models;
 
 namespace CentricTeam15.Controllers
 {
-    public class RecognizeMe2Controller : Controller
+    public class RecognizeMe3Controller : Controller
     {
         private AccountDetailsContext db = new AccountDetailsContext();
 
-        // GET: RecognizeMe2
+        // GET: RecognizeMe3
         public ActionResult Index()
         {
             return View(db.RecognizeMes.ToList());
         }
 
-        // GET: RecognizeMe2/Details/5
+        // GET: RecognizeMe3/Details/5
         public ActionResult Details(Guid? id)
         {
             if (id == null)
@@ -36,13 +36,13 @@ namespace CentricTeam15.Controllers
             return View(recognizeMe);
         }
 
-        // GET: RecognizeMe2/Create
+        // GET: RecognizeMe3/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: RecognizeMe2/Create
+        // POST: RecognizeMe3/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -60,7 +60,7 @@ namespace CentricTeam15.Controllers
             return View(recognizeMe);
         }
 
-        // GET: RecognizeMe2/Edit/5
+        // GET: RecognizeMe3/Edit/5
         public ActionResult Edit(Guid? id)
         {
             if (id == null)
@@ -75,12 +75,12 @@ namespace CentricTeam15.Controllers
             return View(recognizeMe);
         }
 
-        // POST: RecognizeMe2/Edit/5
+        // POST: RecognizeMe3/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,firstName,lastName,bussinessUnit,description,coreValue")] RecognizeMe recognizeMe)
+        public ActionResult Edit([Bind(Include = "ID,firstName,lastName,bussinessUnit,description,award")] RecognizeMe recognizeMe)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +91,7 @@ namespace CentricTeam15.Controllers
             return View(recognizeMe);
         }
 
-        // GET: RecognizeMe2/Delete/5
+        // GET: RecognizeMe3/Delete/5
         public ActionResult Delete(Guid? id)
         {
             if (id == null)
@@ -106,7 +106,7 @@ namespace CentricTeam15.Controllers
             return View(recognizeMe);
         }
 
-        // POST: RecognizeMe2/Delete/5
+        // POST: RecognizeMe3/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
