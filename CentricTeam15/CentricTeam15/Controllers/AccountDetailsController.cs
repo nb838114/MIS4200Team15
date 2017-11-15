@@ -65,10 +65,12 @@ namespace CentricTeam15.Controllers
                 Guid memberID;
                 Guid.TryParse(User.Identity.GetUserId(), out memberID);
                 ID.ID = memberID;
-                db.AccountDetails.Add(ID);
+                
 
                 try
                 {
+                    db.SaveChanges();
+                    return RedirectToAction("DIndex");
 
                     HttpPostedFileBase file = Request.Files["photo"]; //(A) – see notes below
                                                                       //accountDetail.photo = Guid.NewGuid();
@@ -88,8 +90,8 @@ namespace CentricTeam15.Controllers
 
                         }
                     }
-
-                        db.SaveChanges();
+                    db.AccountDetails.Add(ID);
+                    db.SaveChanges();
                     return RedirectToAction("Index");
                 }
                 catch (Exception)
@@ -117,14 +119,8 @@ namespace CentricTeam15.Controllers
             Guid memberID;
             Guid.TryParse(User.Identity.GetUserId(), out memberID);
 
-            if (user.ID == memberID)
-            {
             return View(user);
-            }
-            else
-            {
-            return View("NotAuthenticated");
-            }
+          
 
         }
 
@@ -173,9 +169,9 @@ namespace CentricTeam15.Controllers
                             // delete failed - probably not a real issue
                         }
                         // now upload the new image
-                        accountDetail.photo = accountDetail.photo + fi.Extension;
+                        accountDetail.photo = accountDetail.ID + fi.Extension;
 
-                        file.SaveAs(Server.MapPath("~/_Images/" + accountDetail.photo + fi.Extension));
+                        file.SaveAs(Server.MapPath("~/_Images/" + accountDetail.photo));
 
                     }
                 }
@@ -262,9 +258,9 @@ namespace CentricTeam15.Controllers
                     }
                     else
                     {
-                        accountDetail.photo = accountDetail.photo + fi.Extension; //(F)
+                        accountDetail.photo = accountDetail.ID + fi.Extension; //(F)
 
-                        file.SaveAs(Server.MapPath("~/_Images/" + accountDetail.photo + fi.Extension));  //(G)
+                        file.SaveAs(Server.MapPath("~/_Images/" + accountDetail.photo));  //(G)
 
                     }
                 }
