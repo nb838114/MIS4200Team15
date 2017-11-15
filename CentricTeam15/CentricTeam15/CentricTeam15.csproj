@@ -280,6 +280,8 @@
     <Content Include="Views\RecognizeMe2\Edit.cshtml" />
     <Content Include="Views\RecognizeMe2\Index.cshtml" />
     <Content Include="Views\Suggestions\Suggestions.cshtml" />
+    <Content Include="Views\AccountDetails\DuplicateUser.cshtml" />
+    <Content Include="Views\AccountDetails\NotAuthorized.cshtml" />
     <Content Include="Views\RecognizeMe3\Create.cshtml" />
     <Content Include="Views\RecognizeMe3\Delete.cshtml" />
     <Content Include="Views\RecognizeMe3\Details.cshtml" />
