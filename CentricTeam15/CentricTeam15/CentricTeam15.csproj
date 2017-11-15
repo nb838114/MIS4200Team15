@@ -293,10 +293,12 @@
     <Content Include="Views\LiveABalancedLives\Details.cshtml" />
     <Content Include="Views\LiveABalancedLives\Edit.cshtml" />
     <Content Include="Views\LiveABalancedLives\Index.cshtml" />
+    <Content Include="Views\Dashboard\DIndex.cshtml" />
+    <Content Include="Views\AccountDetails\DuplicateUser.cshtml" />
+    <Content Include="Views\AccountDetails\NotAuthorized.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Dashboard\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
