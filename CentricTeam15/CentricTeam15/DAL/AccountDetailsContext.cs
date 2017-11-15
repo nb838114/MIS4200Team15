@@ -27,6 +27,8 @@ namespace CentricTeam15.DAL
         public System.Data.Entity.DbSet<CentricTeam15.Models.RecognizeMe> RecognizeMes { get; set; }
 
         public System.Data.Entity.DbSet<CentricTeam15.Models.LiveABalancedLife> LiveABalancedLives { get; set; }
+
+        public System.Data.Entity.DbSet<CentricTeam15.Models.CommitToDeliveryExcellence> CommitToDeliveryExcellences { get; set; }
     }
 
     // Database.SetInitializer(new MigrateDatabaseToLatestVersion<CentricTeam15.DAL.AccountDetailsContext, CentricTeam15.Migrations.DbContext.Configuration>("DefaultConnection"));
