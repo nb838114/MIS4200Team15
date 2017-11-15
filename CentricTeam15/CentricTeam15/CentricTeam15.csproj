@@ -193,10 +193,15 @@
     <Compile Include="Controllers\AccountDetailsController.cs" />
     <Compile Include="Controllers\CommitToDeliveryExcellencesController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\EmbraceIntegrityAndOpennessesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IgnitePassionForTheGreaterGoodsController.cs" />
+    <Compile Include="Controllers\InvestInAnExeptionalCulturesController.cs" />
     <Compile Include="Controllers\LiveABalancedLivesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PracticeResponsibleStewardshipsController.cs" />
     <Compile Include="Controllers\RecognizeMe3Controller.cs" />
+    <Compile Include="Controllers\StriveToInnovatesController.cs" />
     <Compile Include="DAL\AccountDetailsContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -307,6 +312,31 @@
     <Content Include="Views\CommitToDeliveryExcellences\Details.cshtml" />
     <Content Include="Views\CommitToDeliveryExcellences\Edit.cshtml" />
     <Content Include="Views\CommitToDeliveryExcellences\Index.cshtml" />
+    <Content Include="Views\InvestInAnExeptionalCultures\Create.cshtml" />
+    <Content Include="Views\InvestInAnExeptionalCultures\Delete.cshtml" />
+    <Content Include="Views\InvestInAnExeptionalCultures\Details.cshtml" />
+    <Content Include="Views\InvestInAnExeptionalCultures\Edit.cshtml" />
+    <Content Include="Views\InvestInAnExeptionalCultures\Index.cshtml" />
+    <Content Include="Views\EmbraceIntegrityAndOpennesses\Create.cshtml" />
+    <Content Include="Views\EmbraceIntegrityAndOpennesses\Delete.cshtml" />
+    <Content Include="Views\EmbraceIntegrityAndOpennesses\Details.cshtml" />
+    <Content Include="Views\EmbraceIntegrityAndOpennesses\Edit.cshtml" />
+    <Content Include="Views\EmbraceIntegrityAndOpennesses\Index.cshtml" />
+    <Content Include="Views\PracticeResponsibleStewardships\Create.cshtml" />
+    <Content Include="Views\PracticeResponsibleStewardships\Delete.cshtml" />
+    <Content Include="Views\PracticeResponsibleStewardships\Details.cshtml" />
+    <Content Include="Views\PracticeResponsibleStewardships\Edit.cshtml" />
+    <Content Include="Views\PracticeResponsibleStewardships\Index.cshtml" />
+    <Content Include="Views\StriveToInnovates\Create.cshtml" />
+    <Content Include="Views\StriveToInnovates\Delete.cshtml" />
+    <Content Include="Views\StriveToInnovates\Details.cshtml" />
+    <Content Include="Views\StriveToInnovates\Edit.cshtml" />
+    <Content Include="Views\StriveToInnovates\Index.cshtml" />
+    <Content Include="Views\IgnitePassionForTheGreaterGoods\Create.cshtml" />
+    <Content Include="Views\IgnitePassionForTheGreaterGoods\Delete.cshtml" />
+    <Content Include="Views\IgnitePassionForTheGreaterGoods\Details.cshtml" />
+    <Content Include="Views\IgnitePassionForTheGreaterGoods\Edit.cshtml" />
+    <Content Include="Views\IgnitePassionForTheGreaterGoods\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
