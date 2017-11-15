@@ -69,6 +69,8 @@ namespace CentricTeam15.Controllers
 
                 try
                 {
+                    db.SaveChanges();
+                    return RedirectToAction("DIndex");
 
                     HttpPostedFileBase file = Request.Files["photo"]; //(A) – see notes below
                                                                       //accountDetail.photo = Guid.NewGuid();
