@@ -11,108 +11,108 @@ using CentricTeam15.Models;
 
 namespace CentricTeam15.Controllers
 {
-    public class RecognizeMe2Controller : Controller
+    public class IgnitePassionForTheGreaterGoodsController : Controller
     {
         private AccountDetailsContext db = new AccountDetailsContext();
 
-        // GET: RecognizeMe2
+        // GET: IgnitePassionForTheGreaterGoods
         public ActionResult Index()
         {
-            return View(db.RecognizeMes.ToList());
+            return View(db.IgnitePassionForTheGreaterGoods.ToList());
         }
 
-        // GET: RecognizeMe2/Details/5
+        // GET: IgnitePassionForTheGreaterGoods/Details/5
         public ActionResult Details(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RecognizeMe recognizeMe = db.RecognizeMes.Find(id);
-            if (recognizeMe == null)
+            IgnitePassionForTheGreaterGood ignitePassionForTheGreaterGood = db.IgnitePassionForTheGreaterGoods.Find(id);
+            if (ignitePassionForTheGreaterGood == null)
             {
                 return HttpNotFound();
             }
-            return View(recognizeMe);
+            return View(ignitePassionForTheGreaterGood);
         }
 
-        // GET: RecognizeMe2/Create
+        // GET: IgnitePassionForTheGreaterGoods/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: RecognizeMe2/Create
+        // POST: IgnitePassionForTheGreaterGoods/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,firstName,lastName,bussinessUnit,description,coreValue")] RecognizeMe recognizeMe)
+        public ActionResult Create([Bind(Include = "ID,firstName,lastName,suggestion")] IgnitePassionForTheGreaterGood ignitePassionForTheGreaterGood)
         {
             if (ModelState.IsValid)
             {
-                recognizeMe.ID = Guid.NewGuid();
-                db.RecognizeMes.Add(recognizeMe);
+                ignitePassionForTheGreaterGood.ID = Guid.NewGuid();
+                db.IgnitePassionForTheGreaterGoods.Add(ignitePassionForTheGreaterGood);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(recognizeMe);
+            return View(ignitePassionForTheGreaterGood);
         }
 
-        // GET: RecognizeMe2/Edit/5
+        // GET: IgnitePassionForTheGreaterGoods/Edit/5
         public ActionResult Edit(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RecognizeMe recognizeMe = db.RecognizeMes.Find(id);
-            if (recognizeMe == null)
+            IgnitePassionForTheGreaterGood ignitePassionForTheGreaterGood = db.IgnitePassionForTheGreaterGoods.Find(id);
+            if (ignitePassionForTheGreaterGood == null)
             {
                 return HttpNotFound();
             }
-            return View(recognizeMe);
+            return View(ignitePassionForTheGreaterGood);
         }
 
-        // POST: RecognizeMe2/Edit/5
+        // POST: IgnitePassionForTheGreaterGoods/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,firstName,lastName,bussinessUnit,description,coreValue")] RecognizeMe recognizeMe)
+        public ActionResult Edit([Bind(Include = "ID,firstName,lastName,suggestion")] IgnitePassionForTheGreaterGood ignitePassionForTheGreaterGood)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(recognizeMe).State = EntityState.Modified;
+                db.Entry(ignitePassionForTheGreaterGood).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(recognizeMe);
+            return View(ignitePassionForTheGreaterGood);
         }
 
-        // GET: RecognizeMe2/Delete/5
+        // GET: IgnitePassionForTheGreaterGoods/Delete/5
         public ActionResult Delete(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RecognizeMe recognizeMe = db.RecognizeMes.Find(id);
-            if (recognizeMe == null)
+            IgnitePassionForTheGreaterGood ignitePassionForTheGreaterGood = db.IgnitePassionForTheGreaterGoods.Find(id);
+            if (ignitePassionForTheGreaterGood == null)
             {
                 return HttpNotFound();
             }
-            return View(recognizeMe);
+            return View(ignitePassionForTheGreaterGood);
         }
 
-        // POST: RecognizeMe2/Delete/5
+        // POST: IgnitePassionForTheGreaterGoods/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
-            RecognizeMe recognizeMe = db.RecognizeMes.Find(id);
-            db.RecognizeMes.Remove(recognizeMe);
+            IgnitePassionForTheGreaterGood ignitePassionForTheGreaterGood = db.IgnitePassionForTheGreaterGoods.Find(id);
+            db.IgnitePassionForTheGreaterGoods.Remove(ignitePassionForTheGreaterGood);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
